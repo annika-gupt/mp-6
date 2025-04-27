@@ -1,6 +1,6 @@
 "use client";
 import "./globals.css";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
     const { data: session } = useSession();
@@ -30,6 +30,12 @@ export default function Home() {
                 />
             )}
             <p className="text-lg">{session.user?.email}</p>
+            <button
+                onClick={() => signOut()}
+                className="mt-6 bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition"
+            >
+                Sign out
+            </button>
         </main>
     );
 }
