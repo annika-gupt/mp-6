@@ -1,24 +1,16 @@
 "use client";
 import "./globals.css";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
-    const { data: session, status } = useSession();
-
-    if (status === "loading") {
-        return (
-            <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
-                <h1 className="text-2xl">Loading...</h1>
-            </main>
-        );
-    }
+    const { data: session } = useSession();
 
     if (!session) {
         return (
             <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
-                <h1 className="text-4xl font-bold mb-8">Welcome to CS391 OAuth</h1>
+                <h1 className="text-4xl font-bold mb-8">CS391 OAuth</h1>
                 <button
-                    onClick={() => signIn("github", { prompt: "login" })}
+                    onClick={() => signIn("github")}
                     className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition"
                 >
                     Sign in with GitHub
@@ -38,6 +30,12 @@ export default function Home() {
                 />
             )}
             <p className="text-lg">{session.user?.email}</p>
+            <button
+                onClick={() => signOut()}
+                className="mt-6 bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition"
+            >
+                Sign out
+            </button>
         </main>
     );
 }
