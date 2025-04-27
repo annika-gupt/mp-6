@@ -31,7 +31,7 @@ export default function Home() {
             )}
             <p className="text-lg">{session.user?.email}</p>
             <button
-                onClick={() => signOut()}
+                onClick={() => signOut({ redirectTo: "/" })}
                 className="mt-6 bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition"
             >
                 Sign out
