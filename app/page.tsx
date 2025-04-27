@@ -10,7 +10,7 @@ export default function Home() {
             <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
                 <h1 className="text-4xl font-bold mb-8">CS391 OAuth</h1>
                 <button
-                    onClick={() => signIn("github")}
+                    onClick={() => signIn("github", { prompt: "login" })}
                     className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200 transition"
                 >
                     Sign in with GitHub
